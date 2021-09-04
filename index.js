@@ -25,7 +25,11 @@ function RemoveTreeNode(node){
 }
 
 function EditContent(content){
-    console.log(content)
+    $(content).attr('contenteditable', 'true')
+    if(content != ElementEditable)
+        $(ElementEditable).removeAttr('contenteditable', 'false')
+    $(content).focus()
+    ElementEditable = content
 }
 
 function TreeNodeClicked(node){
@@ -39,7 +43,7 @@ function TreeNodeClicked(node){
         if(node.classList[1] == "fa-plus")
             AddNode($(node).closest(".node-content"))
         if(node.classList[1] == "fa-edit")
-            console.log('edit')
+            EditContent($(node).parent().prev())
         if(node.classList[1] == "fa-trash-alt")
             RemoveTreeNode($(node).closest(".node-content"))
     return 
@@ -47,6 +51,7 @@ function TreeNodeClicked(node){
 
 const Tree = document.getElementById('tree')
 let ElementClicked = false
+let ElementEditable = false
 AddNode(Tree)
 AddNode(Tree)
 AddNode(Tree)
