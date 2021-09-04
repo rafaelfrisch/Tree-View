@@ -60,9 +60,7 @@ AddNode(Tree)
 AddNode(Tree)
 AddNode(Tree)
 
-
 $(document).on('click', '.tree-element', (event)=>{
     TreeNodeClicked(event.target)
 })
-
   
