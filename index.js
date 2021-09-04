@@ -21,7 +21,11 @@ function AddNode(parent){
 }
 
 function RemoveTreeNode(node){
-    console.log(node)
+    $(node).remove()
+}
+
+function EditContent(content){
+    console.log(content)
 }
 
 function TreeNodeClicked(node){
@@ -37,7 +41,7 @@ function TreeNodeClicked(node){
         if(node.classList[1] == "fa-edit")
             console.log('edit')
         if(node.classList[1] == "fa-trash-alt")
-            console.log('remove')
+            RemoveTreeNode($(node).closest(".node-content"))
     return 
 }
 
@@ -50,6 +54,3 @@ AddNode(Tree)
 $(document).on('click', '.tree-element', (event)=>{
     TreeNodeClicked(event.target)
 })
-// $('.tree-element').click(event =>{
-//     TreeNodeClicked(event.target)
-// })
