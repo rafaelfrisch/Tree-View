@@ -9,14 +9,15 @@ function AddIcons(){
 }
 
 function AddContent(){
-    const Text = $('<div class="tree-content">').html("Lorem Ipsum")
+    const Text = $('<div class="tree-content">').html("Lorem ipsum")
     return Text
 }
 
 function AddNode(parent){
     const TreeNode = $('<div class="tree-element">')
         .append(AddContent(), AddIcons())
-    $(parent).append(TreeNode)
+    const NodeContent = $('<div class="node-content">').append(TreeNode)
+    $(parent).append(NodeContent)
 }
 
 function RemoveTreeNode(node){
@@ -32,7 +33,7 @@ function TreeNodeClicked(node){
 
     if(node.classList[0] == "fas")
         if(node.classList[1] == "fa-plus")
-            console.log('add')
+            AddNode($(node).closest(".node-content"))
         if(node.classList[1] == "fa-edit")
             console.log('edit')
         if(node.classList[1] == "fa-trash-alt")
@@ -46,6 +47,9 @@ AddNode(Tree)
 AddNode(Tree)
 AddNode(Tree)
 
-$('.tree-element').click(event =>{
+$(document).on('click', '.tree-element', (event)=>{
     TreeNodeClicked(event.target)
 })
+// $('.tree-element').click(event =>{
+//     TreeNodeClicked(event.target)
+// })
