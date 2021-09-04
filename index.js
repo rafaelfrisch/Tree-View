@@ -25,9 +25,12 @@ function RemoveTreeNode(node){
 }
 
 function EditContent(content){
+    $(content).addClass('text-editable')
     $(content).attr('contenteditable', 'true')
-    if(content != ElementEditable)
+    if(content != ElementEditable){
+        $(ElementEditable).removeClass('text-editable')
         $(ElementEditable).removeAttr('contenteditable', 'false')
+    }
     $(content).focus()
     ElementEditable = content
 }
